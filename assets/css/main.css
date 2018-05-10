@@ -1,0 +1,125 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: rgb(221, 221, 221);
+    color: #333;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='32' viewBox='0 0 16 32'%3E%3Cg fill='%23bdbdbd' fill-opacity='0.4'%3E%3Cpath fill-rule='evenodd' d='M0 24h4v2H0v-2zm0 4h6v2H0v-2zm0-8h2v2H0v-2zM0 0h4v2H0V0zm0 4h2v2H0V4zm16 20h-6v2h6v-2zm0 4H8v2h8v-2zm0-8h-4v2h4v-2zm0-20h-6v2h6V0zm0 4h-4v2h4V4zm-2 12h2v2h-2v-2zm0-8h2v2h-2V8zM2 8h10v2H2V8zm0 8h10v2H2v-2zm-2-4h14v2H0v-2zm4-8h6v2H4V4zm0 16h6v2H4v-2zM6 0h2v2H6V0zm0 24h2v2H6v-2z'/%3E%3C/g%3E%3C/svg%3E");
+}
+table thead {
+    background-color: rgb(253, 180, 44);
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: 'Playfair Display SC', serif;
+
+}
+
+table  th:nth-child(1){
+    border-radius: 20px 0px 0px 0px;
+ }
+ table  th:nth-last-child(1){
+    border-radius: 0px 20px 0px 0px;
+ }
+
+.table {
+    width: 90%;
+    margin: 5%;
+    background-color: white;
+    text-align: center;
+    border-radius: 20px; 
+    box-shadow: 5px 5px 20px 0px grey;
+}
+
+
+
+#header {
+    background-color: white;
+    font-family: 'Playfair Display SC', serif;
+    text-align: center;
+    color:  rgb(253, 180, 44);
+    display: grid;
+    padding: 20px;
+    box-shadow: 5px 5px 20px 0px grey;
+}
+#currency-changer {
+    font-family: 'Open Sans', sans-serif;
+    max-width: 400px;
+    margin: auto 0;
+    justify-self: center;
+}
+h1 {
+    line-height: 1.5;
+    font-size: 5rem;
+}
+
+#icon {
+    font-size: 10rem;
+}
+
+
+
+
+#footer {
+    background-color: grey;
+    text-align: center;
+    line-height: 1.5;
+    font-size: 15px;
+    color: white;
+    padding: 10px;
+    box-shadow: 5px 5px 20px 0px grey;
+}
+
+#footer-border {
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    background-color: rgb(87, 154, 253);
+    text-align: center;
+    height: 25px;
+    font-size: 15px;
+
+
+}
+
+
+
+button {
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    border: .5px solid rgb(87, 154, 253);
+    background-color: rgb(87, 154, 253);
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 10px;
+    border-radius: 5px;
+    font-weight: 700;
+}
+
+.currency-selector {
+    font-family: 'Open Sans', sans-serif;
+    height: 100%;
+    width: 100%;
+    color:  rgb(87, 154, 253);;
+    border: solid .5px rgb(206, 212, 218);
+    opacity: .5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px 0px 0px 5px;
+    background: rgb(233, 236, 239);
+}
+
+#amount-input {
+    padding: 10px;
+    z-index: 2;
+}
+#cents {
+    border-radius: 0px 5px 5px 0px;
+    font-size: .75em;
+
+    z-index: 3;
+}
+
+#instructions {
+    color: rgb(133, 133, 133);
+    font-family: 'Open Sans', sans-serif;
+    padding-top: 10px;
+    text-align: center;
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Just a Little Bit</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Style Sheets -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ"
+        crossorigin="anonymous"></script>
+
+
+
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/main.css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Playfair+Display+SC" rel="stylesheet">
+
+</head>
+
+<body>
+    <div id="header">
+        <h1>
+            <i class="fab fa-bitcoin"></i> Just a Lil' Bit
+        </h1>
+        <div class="input-group" id="currency-changer">
+            <div id="currency-dropdown">
+                <select class="currency-selector" name="currencies">
+                    <option value="cny">JPY</option>
+                    <option value="usd" selected="selected">USD</option>
+                    <option value="jpy">CNY</option>
+                    <option value="gbp">EUR</option>
+                    <option value="gbp">GBP</option>
+                    <option value="gbp">CAD</option>
+                </select>
+            </div>
+            <input type="number" class="form-control" id="amount-input" value="10000" aria-label="Amount (to the nearest dollar)">
+            <div class="input-group-append">
+                <span class="input-group-text" id="cents">.00</span>
+                <button>Submit</button>
+            </div>
+        </div>
+        <div id="instructions">
+            Enter your desired purchase amount.
+        </div>
+    </div>
+    <div id="pricing-table">
+        <table class="table">
+            <thead id="tableHeader">
+                <tr>
+                    <!-- Sort Function -->
+                    <th scope="col">Market
+                    </th>
+                    <th scope="col">Price
+                    </th>
+                    <th scope="col">Purchasing Power
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="bit-table">
+            </tbody>
+        </table>
+    </div>
+    <div id = "footer-border">Data populate by CryptoCompare</div>
+    <div id="footer">© 2018 Avery Bruner, Andy Ho, Jared Gilpin and Carolyn McEvoy </div>
+
+
+
+    <!-- Javascript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.18.0/moment.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.2/socket.io.js"></script>
+    <script src="./assets/javascript/ccc-streamer-utilities.js"></script>
+    <script src="./assets/javascript/main.js"></script>
+</body>
+
+</html>
