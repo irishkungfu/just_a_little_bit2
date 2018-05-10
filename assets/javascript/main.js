@@ -15,8 +15,8 @@ var currencySymbols = {
   EUR: "€",
   GBP: "£",
   CAD: "$",
-  AUD: "$",
-}
+  AUD: "$"
+};
 // currencySymbols[currentCurrency]
 
 var streamUrl = "https://streamer.cryptocompare.com/";
@@ -86,27 +86,34 @@ var transformData = function(data) {
     Quantity: CCC.convertValueToDisplay(coinfsym, incomingTrade["Q"]),
     Total: CCC.convertValueToDisplay(cointsym, incomingTrade["TOTAL"])
   };
-
+  console.log(newTrade);
   displayData(newTrade);
 };
-//Added in filter F & 2 to only capture Buying Transaction
+//Added in filter F & 2 to only capture exchanges with recent transactions.  Avoids having 9 month old pricing data
 var displayData = function(dataUnpacked) {
-  startDay = moment.utc().startOf('day').format("LLL"); //GETTING THE VERY START OF A CERTAIN DAY
+  startDay = moment
+    .utc()
+    .startOf("day")
+    .format("LLL"); //GETTING THE VERY START OF A CERTAIN DAY
   console.log(startDay);
- 
-  var time = parseInt(dataUnpacked.TimeUnix);    //string
+
+  var time = parseInt(dataUnpacked.TimeUnix); //string
   console.log(time);
- 
+
   var timeConvert = moment.unix(time).format("LLL");
   console.log(timeConvert);
- 
-  var sameDay = moment(startDay).diff(timeConvert, 'day');
+
+  var sameDay = moment(startDay).diff(timeConvert, "day");
   console.log(sameDay);
   // console.log(priceArray);
   ///////////////////////////////////////////////////////////////////////////////////////////
 
   for (var i = 0; i < exchanges.length; i++) {
-    if ((exchanges[i] === dataUnpacked.Market) && (dataUnpacked.Flag & 1) && (sameDay === 0) ) {
+    if (
+      exchanges[i] === dataUnpacked.Market &&
+      dataUnpacked.Flag & 1 &&
+      sameDay === 0
+    ) {
       // $("#price-" + exchanges[i]).html(dataUnpacked.Price);
       test[i] = dataUnpacked.Price;
       // console.log(test);
@@ -115,22 +122,26 @@ var displayData = function(dataUnpacked) {
         currentRate;
       console.log("Current rate is presently: " + currentRate);
 
-
-
-      $("#price-" + exchanges[i]).html(currencySymbols[currentCurrency] + priceParsed.toFixed(2));
+      $("#price-" + exchanges[i]).html(
+        currencySymbols[currentCurrency] + priceParsed.toFixed(2)
+      );
       var userSpend = parseFloat($("input").val());
 
       purchaseAmount = userSpend / priceParsed;
 
       // console.log(purchaseAmount);
       $("#available-" + exchanges[i]).html(purchaseAmount.toFixed(6));
-
-
-    } 
-    if ((exchanges[i] === dataUnpacked.Market) && ((sameDay !== 0) || ((dataUnpacked.Flag & 4) || ((dataUnpacked.Flag & 2) && (dataUnpacked.Flag &! 1)) ))){
-      $("#available-"+exchanges[i]).parent().remove();
-    
-      }
+    }
+    if (
+      exchanges[i] === dataUnpacked.Market &&
+      (sameDay !== 0 ||
+        (dataUnpacked.Flag & 4 ||
+          (dataUnpacked.Flag & 2 && dataUnpacked.Flag & !1)))
+    ) {
+      $("#available-" + exchanges[i])
+        .parent()
+        .remove();
+    }
   }
 
   // $("#row-test").html(
@@ -196,7 +207,9 @@ function updateTable(selector) {
       userInput = parseFloat($("input").val());
       purchasePower = userInput / price;
 
-      $("#price-" + exchanges[i]).html(currencySymbols[currentCurrency] + price.toFixed(2));
+      $("#price-" + exchanges[i]).html(
+        currencySymbols[currentCurrency] + price.toFixed(2)
+      );
       $("#available-" + exchanges[i]).html(purchasePower.toFixed(6));
     }
   } else {
@@ -204,17 +217,16 @@ function updateTable(selector) {
       var price = pullPrice(exchanges[i]) * oldDivisor * currentRate;
       userInput = parseFloat($("input").val());
       purchasePower = userInput / price;
-      // console.log(price);
 
-
-      $("#price-" + exchanges[i]).html(currencySymbols[currentCurrency] + price.toFixed(2));
+      $("#price-" + exchanges[i]).html(
+        currencySymbols[currentCurrency] + price.toFixed(2)
+      );
       $("#available-" + exchanges[i]).html(purchasePower.toFixed(6));
     }
   }
 }
 
-
-function pullPrice (exchange) {
+function pullPrice(exchange) {
   return parseFloat(
     $("#price-" + exchange)
       .text()
@@ -223,6 +235,5 @@ function pullPrice (exchange) {
       .replace("¥", "")
       .replace("€", "")
       .replace("£", "")
-  ) 
+  );
 }
-
