@@ -86,7 +86,7 @@ var transformData = function(data) {
     Quantity: CCC.convertValueToDisplay(coinfsym, incomingTrade["Q"]),
     Total: CCC.convertValueToDisplay(cointsym, incomingTrade["TOTAL"])
   };
-  console.log(newTrade);
+  // console.log(newTrade);
   displayData(newTrade);
 };
 //Added in filter F & 2 to only capture exchanges with recent transactions.  Avoids having 9 month old pricing data
@@ -95,16 +95,16 @@ var displayData = function(dataUnpacked) {
     .utc()
     .startOf("day")
     .format("LLL"); //GETTING THE VERY START OF A CERTAIN DAY
-  console.log(startDay);
+  // console.log(startDay);
 
   var time = parseInt(dataUnpacked.TimeUnix); //string
-  console.log(time);
+  // console.log(time);
 
   var timeConvert = moment.unix(time).format("LLL");
-  console.log(timeConvert);
+  // console.log(timeConvert);
 
   var sameDay = moment(startDay).diff(timeConvert, "day");
-  console.log(sameDay);
+  // console.log(sameDay);
   // console.log(priceArray);
   ///////////////////////////////////////////////////////////////////////////////////////////
 
@@ -120,10 +120,10 @@ var displayData = function(dataUnpacked) {
       var priceParsed =
         parseFloat(dataUnpacked.Price.replace("$", "").replace(",", "")) *
         currentRate;
-      console.log("Current rate is presently: " + currentRate);
+      // console.log("Current rate is presently: " + currentRate);
 
       $("#price-" + exchanges[i]).html(
-        currencySymbols[currentCurrency] + priceParsed.toFixed(2)
+        currencySymbols[currentCurrency] + numeral(priceParsed).format("0,0.00")
       );
       var userSpend = parseFloat($("input").val());
 
@@ -159,7 +159,7 @@ $("button").click(function() {
 
     userInput = parseFloat($("input").val());
     purchasePower = userInput / price;
-    console.log(purchasePower);
+    // console.log(purchasePower);
     $("#available-" + exchanges[i]).html(purchasePower.toFixed(6));
   }
 });
@@ -176,7 +176,7 @@ $(".currency-selector").change(function() {
         changeCurrency();
       },
       error: function(x, e) {
-        console.log(e);
+        // console.log(e);
       }
     });
   } else {
@@ -187,7 +187,7 @@ function changeCurrency() {
   if (currentCurrency === "USD") {
     oldRate = currentRate;
     currentRate = 1;
-    console.log(currentRate);
+    // console.log(currentRate);
     updateTable("available");
   } else {
     oldRate = currentRate;
@@ -201,14 +201,14 @@ function updateTable(selector) {
   if (oldRate) {
     for (i = 0; i < exchanges.length; i++) {
       var oldDivisor = 1 / oldRate;
-      console.log(pullPrice(exchanges[i]));
+      // console.log(pullPrice(exchanges[i]));
       var price = pullPrice(exchanges[i]) * oldDivisor;
       price = price * currentRate;
       userInput = parseFloat($("input").val());
       purchasePower = userInput / price;
 
       $("#price-" + exchanges[i]).html(
-        currencySymbols[currentCurrency] + price.toFixed(2)
+        currencySymbols[currentCurrency] + numeral(price).format("0,0.00")
       );
       $("#available-" + exchanges[i]).html(purchasePower.toFixed(6));
     }
@@ -219,7 +219,7 @@ function updateTable(selector) {
       purchasePower = userInput / price;
 
       $("#price-" + exchanges[i]).html(
-        currencySymbols[currentCurrency] + price.toFixed(2)
+        currencySymbols[currentCurrency] + numeral(price).format("0,0.00")
       );
       $("#available-" + exchanges[i]).html(purchasePower.toFixed(6));
     }
